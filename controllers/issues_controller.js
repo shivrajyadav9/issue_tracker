@@ -1,0 +1,42 @@
+import Label from '../models/label.js'
+import Project from '../models/project.js';
+import Issue from '../models/issue.js';
+
+
+let create = async function (req, res) {
+
+    try {
+
+        let existingIssue = await Issue.findOne(
+            {
+                title: req.body.title,
+                project: req.body.project
+            }
+        );
+        if (existingIssue) {
+            req.flash('error', 'Issue with this title already exists');
+            return res.redirect(`/projects/project/${existingIssue.id}`);
+        }
+
+        let newIssue = await Issue.create({
+            title: req.body.title,
+            description: req.body.description,
+            labels: req.body.labels,
+            project: req.body.project,
+            author: req.user._id
+        });
+        let project = await Project.findById(newIssue.project).populate('issues');
+        project.issues.push(newIssue._id);
+        project.save();
+
+        req.flash('success', 'New Issue Created');
+        return res.redirect('back');
+
+    } catch (err) {
+        req.flash('error', 'could not create issue');
+        return res.redirect('back');
+    }
+}
+
+let issuesController = { create };
+export default issuesController;

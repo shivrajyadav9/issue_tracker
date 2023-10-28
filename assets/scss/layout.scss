@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    margin-top: 3%;
+}
+
+body {
+    // margin: 0 0 0 10px;
+    // text-align: center;
+    background-color: rgb(232, 232, 232);
+    font-family: sans-serif;
+
+    .post-content {
+        color: rgb(67, 67, 66)
+    }
+
+    .comment-content {
+        color: rgb(67, 67, 66)
+    }
+}
+
+#nav-bar {
+    // height: 5%;
+    width: 100%;
+    background-color: rgb(69, 79, 155);
+    // opacity: 0.5;
+    position: fixed;
+    top: 0;
+    border-bottom-left-radius: -50px;
+    padding: 10px;
+    display: flex;
+
+    a {
+        color: aliceblue;
+    }
+
+    #home {
+        margin-left: 2%;
+        width: 85%
+    }
+
+    #my-profile-sign-out {
+        display: flex;
+        justify-content: flex-end;
+
+        .my-profile-sign-in {
+            width: 100px;
+        }
+
+        .sigh-out-sign-up {
+            width: 100px;
+        }
+    }
+
+}
+
+
+
+a {
+    color: rgb(129, 11, 220);
+    text-decoration: none;
+}
+
+input {
+    background-color: rgb(232, 232, 232);
+    border: 1px solid darkgray;
+    border-radius: 30px;
+    padding: 5px;
+    color: rgb(109, 106, 98);
+}
+
+textarea {
+    background-color: rgb(232, 232, 232);
+    border: 1px solid darkgray;
+    border-radius: 50px;
+    padding: 5px 20px;
+    width: 80%;
+}
+
+.button {
+    border: 1px solid darkgray;
+    border-radius: 50px;
+    padding: 5px 20px;
+    background-color: rgb(69, 79, 155);
+    color: aliceblue;
+    max-width: 150px;
+
+    a{
+        color:aliceblue;
+    }
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content label {
+    display: block;
+    padding: 8px;
+  }

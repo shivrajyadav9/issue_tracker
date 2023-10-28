@@ -1,0 +1,101 @@
+<div id="project-container">
+
+    <section id="project">
+        <%-include('_project')%>
+            <p>
+            <h4>Issues:-</h4>
+            </p>
+            <p>Filters
+            <form method="get" action="/projects/project/<%=project.id%>">
+                <div class="dropdown">
+                    <div class="button">
+                        <a onclick="toggleDropdown(0)">Labels ^</a>
+                    </div>
+                    <div class="dropdown-content">
+                        <%for(label of project.labels){%>
+                            <label>
+                                <input type="checkbox" name="labels" value="<%=label._id%>">
+                                <%=label.title%>
+                            </label>
+                            <%}%>
+
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="button">
+                        <a onclick="toggleDropdown(1)">Authors ^</a>
+                    </div>
+                    <div class="dropdown-content">
+                        <%for(author of authors){%>
+                            <label>
+                                <input type="checkbox" name="authors" value="<%=author._id%>">
+                                <%=author.name%>
+                            </label>
+                            <%}%>
+
+                    </div>
+                </div>
+                <input type="submit" class="button" value="Filter">
+            </form>
+            </p>
+            <p>
+                Search
+            <form method="get" action="/projects/project/<%=project.id%>">
+                <input type="text" name="search" placeholder="Search title or description" <%if(locals.searchTerm){%>
+                value="<%=searchTerm%>"
+                    <%}%> >
+
+                        <input type="submit" class="button" value="Search">
+            </form>
+            </p>
+
+            <ul>
+
+                <% for(issue of issues){%>
+                    <%-include('_issue')%>
+                        <%}%>
+            </ul>
+    </section>
+
+    <section id="forms">
+        <%if(locals.user){%>
+
+            <p>
+                Create new issue:-
+            <form method="post" action="/issues/create">
+                <input type="text" name="title" placeholder="Issue title ..." required>
+                <input type="text" name="description" placeholder="Issue description ..." required>
+                <input type="text" name="project" placeholder="Issue title ..." value="<%=project.id%>" hidden>
+
+                <div class="dropdown">
+                    <div class="button">
+                        <a onclick="toggleDropdown(2)">Add Labels ^</a>
+                    </div>
+                    <div class="dropdown-content">
+                        <%for(label of project.labels){%>
+                            <label>
+                                <input type="checkbox" name="labels" value="<%=label._id%>">
+                                <%=label.title%>
+                            </label>
+                            <%}%>
+
+                    </div>
+                </div>
+                <input type="submit" class="button" value="Create issue">
+            </form>
+            <br>
+            <br><br>
+
+            Create a new label:-
+            <form method="post" action="/labels/create">
+                <input type="text" name="title" placeholder="Label..." required>
+                <input type="text" name="project" value="<%=project.id%>" hidden>
+                <input type="submit" class="button" value="Create Label">
+            </form>
+
+            </p>
+            <%}else{%>
+                Sign in to add your issue
+                <%}%>
+
+</div>

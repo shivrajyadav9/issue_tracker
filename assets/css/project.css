@@ -1,0 +1,18 @@
+#project-container {
+  display: flex; }
+  #project-container #project {
+    width: 70%;
+    padding-left: 30px; }
+  #project-container #forms {
+    width: 30%; }
+    #project-container #forms input {
+      margin: 5px 0; }
+
+.label {
+  border-radius: 50px;
+  background-color: #60d360;
+  padding: 0 5px; }
+
+.issue-title {
+  font-size: larger;
+  color: #f97407; }

@@ -1,0 +1,18 @@
+<li>
+<p>
+    <span class="issue-title">
+    <%=issue.title%>
+    </span>
+     <%for (label of issue.labels){%>
+        <span class="label">
+        <%=label.title%>
+        </span>
+        <%}%>
+        <br>
+        Description: <%=issue.description%>
+        <br>
+        <br>
+        Issue posted by <%=issue.author.name%>
+        
+</p>
+</li>

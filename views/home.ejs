@@ -1,0 +1,23 @@
+<div id="home-projects-container">
+    <br>
+    <%if(locals.user){%>
+        <div class="button">
+            <a href="projects/create-form">Add a new Project</a>
+        </div>
+        <%}%>
+            <h3>Projects :-</h3>
+
+
+
+            <div id="projects-container">
+                <ul id="projects-list">
+                    <% for(project of projects){%>
+                        <li>
+                            <a href="/projects/project/<%=project.id%>">
+                                <%-include('_project')%>
+                            </a>
+                        </li>
+                        <%}%>
+                </ul>
+            </div>
+</div>

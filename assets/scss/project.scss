@@ -1,0 +1,27 @@
+// body{
+//     background-color: black;
+// }
+#project-container{
+    display: flex;
+
+    #project{
+        width: 70%;
+        padding-left: 30px;
+    }
+    #forms{
+        width:30%;
+        input{
+            // display: block;
+            margin: 5px 0;
+        }
+    }
+}
+.label{
+    border-radius: 50px;
+    background-color: rgb(96, 211, 96);
+    padding:0 5px;
+}
+.issue-title{
+    font-size:larger;
+    color: rgb(249, 116, 7);
+}
