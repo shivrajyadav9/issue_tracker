@@ -72,6 +72,9 @@ let project = async function (req, res) {
                     { title: { $regex: req.query.search, $options: 'i' } },
                     { description: { $regex: req.query.search, $options: 'i' } },
                 ],
+
+                project: req.params.id
+
             }).populate([
                 {
                     path: 'labels'
@@ -114,6 +117,7 @@ let project = async function (req, res) {
                 query.author = req.query.authors
             }
         }
+        query.project=req.params.id;
 
         let issues = await Issue.find(query).populate([
             {
