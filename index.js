@@ -39,7 +39,7 @@ app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
 app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.set('views', path.join(__dirname, './views'));
 
 app.use(session({
     name: 'issue_tracker',//name of the key
