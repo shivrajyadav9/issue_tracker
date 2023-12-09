@@ -21,4 +21,4 @@ const production = {
     mongodb_uri: 'mongodb+srv://vercel-admin-user-65749921cfd0db7119502f37:zMeYyDKYK7lxtf0p@cluster0.fk9lx9t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 }
 
-export default eval(process.env.MONGODB_URI == undefined ? development : production);
+export default production
