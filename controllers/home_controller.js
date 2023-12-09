@@ -4,7 +4,7 @@ let home = async function (req, res) {
     try {
         let projects=await Project.find({}).populate('author');
         console.log(projects[0]);
-        return res.render('home', {
+        return res.render('home.ejs', {
             title: 'Home',
             projects:projects
         });
