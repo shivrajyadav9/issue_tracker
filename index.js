@@ -19,13 +19,13 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-app.use(sassMiddleware({
-    src: path.join(__dirname, './assets/scss'),
-    dest: path.join(__dirname, './assets/css'),
-    debug: true,
-    outputStyle: 'extended',
-    prefix: '/css'
-}));
+// app.use(sassMiddleware({
+//     src: path.join(__dirname, './assets/scss'),
+//     dest: path.join(__dirname, './assets/css'),
+//     debug: true,
+//     outputStyle: 'extended',
+//     prefix: '/css'
+// }));
 
 app.use(express.urlencoded());
 
@@ -50,7 +50,7 @@ app.use(session({
     },
     store: MongoStore.create(
         {
-            mongoUrl: 'mongodb://0.0.0.0/issue_tracker_development',
+            mongoUrl: 'mongodb+srv://shivraj:mongodbcluster@cluster0.fk9lx9t.mongodb.net/issueTracker?retryWrites=true&w=majority',
             autoRemove: 'disabled'
         },
         function (err) {
