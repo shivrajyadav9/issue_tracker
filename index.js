@@ -1,5 +1,4 @@
 import express from 'express';
-import env from './config/environment.js';
 import cookieParser from 'cookie-parser';
 const app = express();
 const port = 1000;
@@ -21,8 +20,8 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(sassMiddleware({
-    src: path.join(__dirname, env.asset_path, 'scss'),
-    dest: path.join(__dirname, env.asset_path, 'css'),
+    src: path.join(__dirname, './assets/scss'),
+    dest: path.join(__dirname, './assets/css'),
     debug: true,
     outputStyle: 'extended',
     prefix: '/css'
@@ -31,7 +30,7 @@ app.use(sassMiddleware({
 app.use(express.urlencoded());
 
 app.use(cookieParser());
-app.use(express.static(env.asset_path));
+app.use(express.static('./assets'));
 
 app.use(expressLayouts);
 
@@ -43,7 +42,7 @@ app.set('views', path.join(__dirname, './views'));
 
 app.use(session({
     name: 'issue_tracker',//name of the key
-    secret: env.session_cookie_key,//key to generate encripted kays
+    secret: 'blahsomething',//key to generate encripted kays
     saveUninitialized: false,
     resave: false,
     cookie: {
