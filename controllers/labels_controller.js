@@ -3,6 +3,7 @@ import Project from '../models/project.js'
 
 let create = async function (req, res) {
     try {
+        // check if the label already exists
         let existinglabel = await Label.findOne({
             project: req.body.project,
             title: req.body.title
@@ -15,6 +16,7 @@ let create = async function (req, res) {
             title: req.body.title,
             project: req.body.ptoject
         });
+        // add label to the array of labels in the project Object
         let project = await Project.findById(req.body.project).populate('labels');
         project.labels.push(newLabel._id);
         await project.save();

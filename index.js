@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser';
 const app = express();
 const port = 1000;
 
+// import all the libraries
 import expressLayouts from 'express-ejs-layouts';
 import db from './config/mongoose.js';
 import session from 'express-session';
@@ -40,6 +41,7 @@ app.set('layout extractScripts', true);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 
+// create session
 app.use(session({
     name: 'issue_tracker',//name of the key
     secret: 'blahsomething',//key to generate encripted kays
@@ -59,6 +61,7 @@ app.use(session({
     )
 }));
 
+// use passport functions
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -67,8 +70,10 @@ app.use(passport.setAuthenticatedUser);
 app.use(flash());
 app.use(customMware.setFlash);
 
+// router
 import indexRouter from './routes/index.js';
 app.use('/', indexRouter);
+
 
 app.listen(port, function (err) {
     if (err) {

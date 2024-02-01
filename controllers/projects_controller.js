@@ -3,17 +3,18 @@ import Project from '../models/project.js';
 import User from '../models/user.js';
 import Issue from '../models/issue.js';
 
-
+// render the form to create a project
 let createForm = function (req, res) {
     return res.render('project-create-form', {
         title: 'Create a new project'
     })
 }
 
-//create an issue
+//create the project
 
 let create = async function (req, res) {
     try {
+        // check if the project is already added
         const existingProject = await Project.findOne(
             {
                 name: req.body.name,
@@ -21,10 +22,11 @@ let create = async function (req, res) {
             }
         )
         if (existingProject) {
+            // return to the project page
             return res.redirect(`/projects/project/${existingProject.id}`)
 
         } else {
-
+            // create new project
             let newProject = await Project.create({
                 name: req.body.name,
                 description: req.body.description,

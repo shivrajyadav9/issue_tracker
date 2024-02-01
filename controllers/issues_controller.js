@@ -2,11 +2,11 @@ import Label from '../models/label.js'
 import Project from '../models/project.js';
 import Issue from '../models/issue.js';
 
-
+// create an issue
 let create = async function (req, res) {
 
     try {
-
+        // check if similar issue already exists
         let existingIssue = await Issue.findOne(
             {
                 title: req.body.title,

@@ -1,5 +1,6 @@
 import Project from '../models/project.js'
 
+// render the home view and pass list of the projects to home view
 let home = async function (req, res) {
     try {
         let projects=await Project.find({}).populate('author');
