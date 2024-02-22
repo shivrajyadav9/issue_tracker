@@ -74,3 +74,29 @@ textarea {
 .dropdown-content label {
   display: block;
   padding: 8px; }
+
+  .delete-btn{
+    color: red;
+    margin-left: 50px;
+  }
+
+  #project-create{
+    width: 50%;
+    margin: 20vh auto;
+  }
+
+  #project-create input{
+    display: block;
+    margin: 10px;
+    width: 80%;
+  }
+
+  #project-create textarea{
+    display: block;
+    margin: 10px;
+  }
+#create-project-btn{
+  margin: 50px auto;
+  /* margin-left: 100px; */
+  /* background-color: red; */
+}

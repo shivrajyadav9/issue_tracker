@@ -2,6 +2,9 @@
 <p>
     <h3>
         <%=project.name%>
+        <% if(locals.user && locals.user.id==project.author.id){%>
+        <a class="delete-btn" href="/projects/delete/<%=project.id%>">Delete</a>
+        <%}%>
     </h3>
     <%=project.description%>
     <br>

@@ -38,5 +38,15 @@ let create = async function (req, res) {
     }
 }
 
-let issuesController = { create };
+let destroy=async function(req,res){
+    let id=req.params.id;
+    let issue=await Issue.findById(id);
+    if(issue.author==req.user.id){
+        await Issue.findByIdAndDelete(id);
+        await Project.findByIdAndUpdate(issue.project,{$pull:{issues:req.params.id}})
+    }
+    return res.redirect('back');
+}
+
+let issuesController = { create,destroy };
 export default issuesController;

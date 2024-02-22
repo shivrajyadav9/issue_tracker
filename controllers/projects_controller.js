@@ -2,6 +2,7 @@
 import Project from '../models/project.js';
 import User from '../models/user.js';
 import Issue from '../models/issue.js';
+import Label from '../models/label.js';
 
 // render the form to create a project
 let createForm = function (req, res) {
@@ -40,6 +41,19 @@ let create = async function (req, res) {
         console.log('error in creating project', err);
     }
 
+}
+
+// Delete project
+
+let destroy= async function(req,res){
+    let id=req.params.id;
+    let project=await Project.findById(id);
+    if(project.author==req.user.id){
+       await Project.findByIdAndDelete(id);
+       await Issue.deleteMany({project:project});
+       await Label.deleteMany({project:project})
+    }
+    return res.redirect('/');
 }
 
 
@@ -150,5 +164,5 @@ let project = async function (req, res) {
 }
 
 
-let projectsController = { createForm, create, project };
+let projectsController = { createForm, create, project ,destroy};
 export default projectsController;

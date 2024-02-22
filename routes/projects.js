@@ -8,5 +8,6 @@ router.get('/project/:id',projectsController.project);
 // router.get('/project/filter/:id',projectsController.filter);
 router.get('/create-form',passport.checkAuthentication,projectsController.createForm);
 router.post('/create',passport.checkAuthentication,projectsController.create);
+router.get('/delete/:id',projectsController.destroy);
 
 export default router;
